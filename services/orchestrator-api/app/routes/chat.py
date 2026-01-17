@@ -4,7 +4,7 @@ from fastapi import APIRouter, Request
 import uuid
 
 from app.memory.chat_memory import ChatMemoryStore
-from app.pipeline.runner import run_pipeline   # adjust import if needed
+
 
 router = APIRouter()
 
@@ -48,10 +48,13 @@ async def chat(req: Request, payload: dict):
     )
 
     # 6. Run LOCKED pipeline (unchanged)
+    from app.pipeline.runner import run_pipeline
+
     result = await run_pipeline(
         history=history,
         user_message=user_text,
     )
+
 
     # 7. Persist assistant message
     assistant_seq = memory.append_message(
