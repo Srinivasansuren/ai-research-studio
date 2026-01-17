@@ -19,7 +19,8 @@ async def chat(req: Request, payload: dict):
     """
 
     # 1. Identify user (already handled elsewhere in your stack)
-    user_id = req.state.user_id
+    user_id = getattr(req.state, "user_id", "anonymous")
+
 
     # 2. Conversation + request identity
     conversation_id = payload.get("conversation_id")
