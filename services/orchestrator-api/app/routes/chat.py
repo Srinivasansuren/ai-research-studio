@@ -50,12 +50,13 @@ async def chat(req: Request, payload: dict):
 
     # 6. Run LOCKED pipeline (unchanged)
     # Phase 3 stub — pipeline wired in Phase 4
-    result = {
-        "assistant_text": f"(Phase 3 stub) I received: {user_text}",
-        "evidence_pack": {},
-        "llm": {},
-        "artifacts": []
-    }
+    from app.pipeline.runner import run_pipeline
+
+    result = await run_pipeline(
+        history=history,
+        user_message=user_text,
+    )
+
 
     # 7. Persist assistant message
     assistant_seq = memory.append_message(
