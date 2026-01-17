@@ -6,5 +6,5 @@ _db = None
 def get_db():
     global _db
     if _db is None:
-        _db = firestore.Client()
+        _db = firestore.Client(project="ai-research-studio")
     return _db
