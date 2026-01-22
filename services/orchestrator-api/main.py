@@ -37,7 +37,7 @@ class ChatResponse(BaseModel):
 # Health check (unchanged)
 # ----------------------------
 
-@app.get("/healthz")
+@app.get("/")
 def healthz() -> Dict[str, Any]:
     return {
         "ok": True,

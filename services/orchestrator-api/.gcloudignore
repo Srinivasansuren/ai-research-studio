@@ -1,0 +1,12 @@
+# Never ship local virtualenvs
+**/.venv
+**/__pycache__
+**/*.pyc
+
+# Git
+.git
+.gitignore
+
+# Local tooling
+.vscode
+.idea
